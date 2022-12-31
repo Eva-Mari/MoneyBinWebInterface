@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css} " />
+  <title>Mortgage Planner</title>
+</head>
+<body>
+<div class="container">
+
+
+  <div >
+
+    <h1>Add a new prospect</h1>
+    <br />
+    <br />
+
+
+    <div >
+      <p>
+        Here you can add a new prospect.  <br />
+        Fill in the form below, then press the button. <br /><br />
+        Remember that it is not possible to leave a form blank.
+        <br />
+        <br />
+        If you wish to go back to the main page,
+        without adding a new customer you can press the back button.
+        <br />
+      </p>
+    </div>
+
+  </div>
+
+
+
+  <div class="col-md-6">
+
+
+    <form action="#" th:action="@{/prospect}" th:object="${prospect}" method="POST" >
+      <div class="form-group">
+        <label for="name">Name</label>
+
+
+
+        <input class="form-control" type="text" th:field="*{name}" id="name"
+               placeholder="Name">
+        <br />
+        <label for="totalLoan">Total Loan</label>
+
+        <input class="form-control" type="text" th:field="*{totalLoan}" id="Total Loan"
+               placeholder="Total Loan">
+        <br />
+        <label for="interest">Interest</label>
+
+        <input class="form-control" type="text" th:field="*{interest}" id="interest"
+               placeholder="Interest">
+        <br />
+        <label for="years">Years</label>
+
+        <input class="form-control" type="text" th:field="*{years}" id="years"
+               placeholder="Years">
+
+        <br />
+      </div>
+      <button type="submit" class="btn btn-success">Add new prospect</button>
+    </form>
+
+    <br/>
+    <br/>
+    <p><a class="btn btn-danger" href="/">Back</a></p>
+  </div>
+
+</div>
+
+<script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

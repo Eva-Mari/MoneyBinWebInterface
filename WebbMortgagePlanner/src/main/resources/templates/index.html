@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css} " />
+    <title>Mortgage Planner</title>
+</head>
+<body>
+
+<div >
+
+<h1 class="text-center">Mortgage Planner</h1>
+<br />
+<br />
+
+
+<div class="text-center">
+    <p>
+        Welcome to the centric bank Money Bin Inc. online mortgage planner!  <br />
+        Here you can view current customers and their calculated monthly payments.  <br />
+        You can also add new customers. If needed, all added prospects can be deleted.  <br /> <br />
+    </p>
+</div>
+
+</div>
+
+<div class="container">
+
+
+
+
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+            <th>Total loan</th>
+            <th>Interest</th>
+            <th>Years</th>
+            <th>Monthly payment</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="prospect : ${allProspects}">
+
+
+            <td th:text="${prospect.name}" >prospect_name</td>
+            <td th:text="${prospect.totalLoan}" >prospect_totalloan</td>
+            <td th:text="${prospect.interest}" >prospect_interest</td>
+            <td th:text="${prospect.years}" >prospect_years</td>
+            <td th:text="${#numbers.formatDecimal(prospect.monthlyPayment,2,2) }">prospect_monthlyPayment</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <p><a class="btn btn-success" href="/create-prospect">Add new prospect</a></p>
+
+
+    <div>
+        <br/>
+        <br/>
+
+        <p>
+            WARNING! Delete all content will delete all saved customers and cannot be undone.
+
+        </p>
+        <a class="btn btn-danger" th:href="@{/deleteAll}">Delete all content</a>
+    </div>
+</div>
+
+<script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+</body>
+</html>
